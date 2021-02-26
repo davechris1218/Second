@@ -2,8 +2,9 @@
 <html lang="en">
 
 <body>
-
       <?php
+
+      echo "Bilangan Prima :" . "<br>";
 
       for ($i = 1; $i <= 100; $i++) {
             $num = 0;
@@ -15,7 +16,7 @@
             }
             if ($num == 2) {
 
-                  echo $i . " = bilangan prima <br/>";
+                  echo $i . "<br>";
             }
       }
 
