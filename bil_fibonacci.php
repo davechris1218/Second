@@ -11,11 +11,11 @@
     echo "Bilangan Fibonacci :" . "<br>";
 
     for ($i = 0; $i <= 20; $i++) {
-        $hasil = $x + $y;
+        $result = $x + $y;
         
-        echo $hasil . "<br>";
+        echo $result . "<br>";
         $x = $y;
-        $y = $hasil;
+        $y = $result;
     }
 
     ?>
