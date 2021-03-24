@@ -51,7 +51,7 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h5 class="modal-title">Add Data Using Modal Boostrap (popup)</h5>
+                    <h5 class="modal-title">Add Data</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -61,8 +61,8 @@
                     <form id="form-save" action="proses_save.php" name="modal_popup" enctype="multipart/form-data" method="POST">
 
                         <div class="form-group" style="padding-bottom: 20px;">
-                            <label for="Modal Name">Modal Name</label>
-                            <input type="text" name="modal_name" id="modal-name" class="form-control" placeholder="Modal Name" required />
+                            <label for="Modal Name">Name</label>
+                            <input type="text" name="modal_name" id="modal-name" class="form-control" placeholder="Name" required />
                         </div>
 
                         <div class="form-group" style="padding-bottom: 20px;">
