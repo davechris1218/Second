@@ -19,7 +19,7 @@
             <thead>
                 <th>No</th>
                 <th>Name</th>
-                <th>Description</th>
+                <th>Age</th>
                 <th>Action</th>
             </thead>
             <tbody id="modal-data">
@@ -66,7 +66,7 @@
                         </div>
 
                         <div class="form-group" style="padding-bottom: 20px;">
-                            <label for="Description">Description</label>
+                            <label for="Description">Age</label>
                             <textarea name="description" id="description" class="form-control" placeholder="Description" required /></textarea>
                         </div>
 

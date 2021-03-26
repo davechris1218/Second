@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="form-group" style="padding-bottom: 20px;">
-                	<label for="Description">Description</label>
+                	<label for="Description">Age</label>
      				<textarea name="description" id="edit-description" class="form-control"><?php echo $r['description']; ?></textarea>
                 </div>
 
