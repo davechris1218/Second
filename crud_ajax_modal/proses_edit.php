@@ -8,7 +8,7 @@
 	if($query)
 	{
 		header('Content-Type: application/json');
-		$content = file_get_contents('http://localhost/php7/modalajax/ajax_data.php', true);
+		$content = file_get_contents('http://localhost/ajax_data.php', true);
 		$data = array('status'=>'success', 'data'=> $content);
 		echo json_encode($data);
 	}
