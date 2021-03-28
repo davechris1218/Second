@@ -4,7 +4,6 @@
 <head>
     <title>CRUD AJAX MODAL</title>
     <meta content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" name="viewport" />
-    <meta content="Aguzrybudy" name="author" />
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script src="jquery/jquery-3.3.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
@@ -15,7 +14,7 @@
     <div class="container mt-5 mb-5">
         <p class="text-right"><a href="javascript.void(0)" class="btn btn-success" data-target="#ModalAdd" data-toggle="modal">Add Data</a></p>
 
-        <table id="mytable" class="table table-bordered">
+        <table id="datatable" class="table table-bordered">
             <thead>
                 <th>No</th>
                 <th>Name</th>
@@ -24,9 +23,10 @@
             </thead>
             <tbody id="modal-data">
                 <?php
-                include "koneksi.php";
+
+                include "connect.php";
                 $no = 0;
-                $modal = mysqli_query($koneksi, "SELECT * FROM modal ORDER BY modal_id DESC");
+                $modal = mysqli_query($connect, "SELECT * FROM modal ORDER BY modal_id DESC");
                 while ($r = mysqli_fetch_array($modal)) {
                     $no++;
 
@@ -58,16 +58,16 @@
                 </div>
 
                 <div class="modal-body">
-                    <form id="form-save" action="proses_save.php" name="modal_popup" enctype="multipart/form-data" method="POST">
+                    <form id="form-save" action="save.php" name="modal_popup" enctype="multipart/form-data" method="POST">
 
                         <div class="form-group" style="padding-bottom: 20px;">
-                            <label for="Modal Name">Name</label>
+                            <label for="Name">Name</label>
                             <input type="text" name="modal_name" id="modal-name" class="form-control" placeholder="Name" required />
                         </div>
 
                         <div class="form-group" style="padding-bottom: 20px;">
                             <label for="Description">Age</label>
-                            <textarea name="description" id="description" class="form-control" placeholder="Description" required /></textarea>
+                            <input type="text" id="description" class="form-control" placeholder="Age" required />
                         </div>
 
                         <div class="modal-footer">
@@ -81,6 +81,7 @@
                         </div>
                     </form>
                 </div>
+
             </div>
         </div>
     </div>
@@ -92,7 +93,6 @@
     <div class="modal fade" id="modal_delete">
         <div class="modal-dialog">
             <div class="modal-content" style="margin-top:100px;">
-
                 <div class="modal-header">
                     <h5 class="modal-title">Are you sure to delete this data ?</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -110,7 +110,7 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $(".open_modal").click(function(e) {
+            $('#datatable').on('click', '.open_modal', function(e) {
                 var m = $(this).attr("id");
                 $.ajax({
                     url: "modal_edit.php",
@@ -130,7 +130,7 @@
     </script>
 
     <script type="text/javascript">
-        $("#form-save").on('submit', function(e) {
+        $('body').on('submit', '#form-save', function(e) {
             e.preventDefault();
             $.ajax({
                     method: $(this).attr("method"),
@@ -144,8 +144,7 @@
                         $("#modal-data").empty();
                         $("#modal-data").html(response.data);
                         $("#ModalAdd").modal('hide');
-                        $('#modal-name').val('');
-                        $('#description').val('');
+                        $(".modal-backdrop").hide();
                     },
                     error: function(e) {
                         // Error function here
@@ -200,7 +199,7 @@
                 e.preventDefault();
                 $.ajax({
                         method: 'POST',
-                        url: 'proses_delete.php',
+                        url: 'delete.php',
                         data: {
                             modal_id: modal_id
                         },
@@ -209,6 +208,7 @@
                             $("#modal-data").empty();
                             $("#modal-data").html(response.data);
                             $("#modal_delete").modal('hide');
+
                         },
                         error: function(e) {
                             // Error function here

@@ -1,7 +1,7 @@
 <?php
-    include "koneksi.php";
+    include "connect.php";
 	$modal_id=$_GET['modal_id'];
-	$modal=mysqli_query($koneksi,"SELECT * FROM modal WHERE modal_id='$modal_id'");
+	$modal=mysqli_query($connect,"SELECT * FROM modal WHERE modal_id='$modal_id'");
 	while($r=mysqli_fetch_array($modal)){
 ?>
 
@@ -19,14 +19,14 @@
         	<form id="form-update" action="proses_edit.php" name="modal_popup" enctype="multipart/form-data" method="POST">
         		
                 <div class="form-group" style="padding-bottom: 20px;">
-                	<label for="Modal Name">Name</label>
-                    <input type="hidden" name="modal_id" id="edit-id"  class="form-control" value="<?php echo $r['modal_id']; ?>" />
-     				<input type="text" name="modal_name" id="edit-name" class="form-control" value="<?php echo $r['modal_name']; ?>"/>
+                	<label for="Name">Name</label>
+                    <input type="hidden" name="modal_id" id="edit-id"  class="form-control" value="<?php echo $r['modal_id']; ?>"/>
+     				<input type="text" name="modal_name" id="edit-name" class="form-control" value="<?php echo $r['modal_name']; ?>" required />
                 </div>
 
                 <div class="form-group" style="padding-bottom: 20px;">
                 	<label for="Description">Age</label>
-     				<textarea name="description" id="edit-description" class="form-control"><?php echo $r['description']; ?></textarea>
+     				<input type="text" id="edit-description" class="form-control" value="<?php echo $r['description']; ?>" required />
                 </div>
 
 	            <div class="modal-footer">
@@ -34,7 +34,7 @@
 	                    Update
 	                </button>
 
-	                <button type="reset" class="btn btn-danger"  data-dismiss="modal" aria-hidden="true">
+	                <button type="reset" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">
 	               		Cancel
 	                </button>
 	            </div>
