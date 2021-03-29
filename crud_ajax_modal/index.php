@@ -25,14 +25,14 @@
                 <?php
 
                 include "connect.php";
-                $no = 0;
+                $x = 0;
                 $modal = mysqli_query($connect, "SELECT * FROM modal ORDER BY modal_id DESC");
                 while ($r = mysqli_fetch_array($modal)) {
-                    $no++;
+                    $x++;
 
                 ?>
                     <tr>
-                        <td><?php echo $no; ?></td>
+                        <td><?php echo $x; ?></td>
                         <td><?php echo  $r['modal_name']; ?></td>
                         <td><?php echo  $r['description']; ?></td>
                         <td>
@@ -191,7 +191,7 @@
 
     <script type="text/javascript">
         $('body').on('click', '.delete_modal', function(e) {
-            let modal_id = $(this).data('id');
+            let modalId = $(this).data('id');
             $('#modal_delete').modal('show', {
                 backdrop: 'static'
             });
@@ -201,7 +201,7 @@
                         method: 'POST',
                         url: 'delete.php',
                         data: {
-                            modal_id: modal_id
+                            modal_id: modalId
                         },
                         success: function(response) {
                             console.log(response);

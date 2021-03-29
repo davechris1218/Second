@@ -1,9 +1,9 @@
 <?php
 	include "connect.php";
-	$modal_id=$_POST['modal_id'];
-	$modal_name = $_POST['modal_name'];
+	$modalId=$_POST['modal_id'];
+	$modalName = $_POST['modal_name'];
 	$description = $_POST['description'];
-	$query=mysqli_query($connect,"UPDATE modal SET modal_name = '$modal_name',description = '$description' WHERE modal_id = '$modal_id'");
+	$query=mysqli_query($connect,"UPDATE modal SET modal_name = '$modalName',description = '$description' WHERE modal_id = '$modalId'");
 	
 	if($query)
 	{

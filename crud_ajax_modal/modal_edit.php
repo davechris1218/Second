@@ -1,7 +1,7 @@
 <?php
     include "connect.php";
-	$modal_id=$_GET['modal_id'];
-	$modal=mysqli_query($connect,"SELECT * FROM modal WHERE modal_id='$modal_id'");
+	$modalId=$_GET['modal_id'];
+	$modal=mysqli_query($connect,"SELECT * FROM modal WHERE modal_id='$modalId'");
 	while($r=mysqli_fetch_array($modal)){
 ?>
 

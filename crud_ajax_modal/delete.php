@@ -1,7 +1,7 @@
 <?php
 	include "connect.php";
-	$modal_id=$_POST['modal_id'];
-	$query=mysqli_query($connect,"Delete FROM modal WHERE modal_id='$modal_id'");
+	$modalId=$_POST['modal_id'];
+	$query=mysqli_query($connect,"Delete FROM modal WHERE modal_id='$modalId'");
 	
 	
 	if($query)

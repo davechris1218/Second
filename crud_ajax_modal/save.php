@@ -1,8 +1,8 @@
 <?php
     include "connect.php";
-    $modal_name = $_POST['modal_name'];
+    $modalName = $_POST['modal_name'];
     $description = $_POST['description'];
-    $query = mysqli_query($connect,"INSERT INTO modal (modal_name,description) VALUES ('$modal_name','$description')");
+    $query = mysqli_query($connect,"INSERT INTO modal (modal_name,description) VALUES ('$modalName','$description')");
 
     if($query)
     {
