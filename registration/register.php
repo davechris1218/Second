@@ -4,7 +4,14 @@
 
 <head>
     <title>Registration system PHP and MySQL</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="http://localhost/registration/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            $("#datepicker").datepicker();
+        });
+    </script>
 </head>
 
 <body>
@@ -21,6 +28,10 @@
         <div class="input-group">
             <label>Email</label>
             <input type="email" name="email" value="<?php echo $email; ?>">
+        </div>
+        <div class="input-group">
+            <label>Date of birth</label>
+            <input type="text" id="datepicker" name="date">
         </div>
         <div class="input-group">
             <label>Password</label>
