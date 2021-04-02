@@ -4,13 +4,13 @@
 <html>
 
 <head>
-    <title>Registration and Login</title>
+    <title>Login PHP and MYSQL</title>
     <link rel="stylesheet" type="text/css" href="http://localhost/registration/style.css">
 </head>
 
 <body>
     <div class="header">
-        <h2>Login</h2>
+        <h2>Login to an existing account</h2>
     </div>
 
     <form method="post" action="login.php">
@@ -30,7 +30,7 @@
             <button type="submit" class="btn" name="login_user">Login</button>
         </div>
 
-        <p>Not have an account? <a href="register.php">Sign Up</a></p>
+        <p><a href="register.php">Register a new account</a></p>
 
     </form>
 

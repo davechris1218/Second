@@ -7,12 +7,13 @@
 
     $db = mysqli_connect('localhost', 'nagax21', 'Fiorenasitalia1234', 'registration');
 
+    // REGISTER
     if (isset($_POST['reg_user'])) {
         $username = mysqli_real_escape_string($db, $_POST['username']);
         $email = mysqli_real_escape_string($db, $_POST['email']);
-        $password_1 = mysqli_real_escape_string($db, $_POST['password_1']);
-        $password_2 = mysqli_real_escape_string($db, $_POST['password_2']);
-    
+        $birthDate = mysqli_real_escape_string($db, $_POST['birth_date']);
+        $password1 = mysqli_real_escape_string($db, $_POST['password_1']);
+        $password2 = mysqli_real_escape_string($db, $_POST['password_2']);
 
         if (empty($username)) {
             array_push($errors, "Username is required");
@@ -22,11 +23,15 @@
             array_push($errors, "Email is required");
         }
 
-        if (empty($password_1)) {
+        if (count($birthDate) > 2003) {
+            array_push($errors, "Age must be 18 or higher");
+        }
+
+        if (empty($password1)) {
             array_push($errors, "Password is required");
         }
 
-        if ($password_1 != $password_2) {
+        if ($password1 != $password2) {
             array_push($errors, "The passwords do not match");
         }
 
@@ -44,7 +49,7 @@
         }
 
         if (count($errors) == 0) {
-            $password = md5($password_1);
+            $password = md5($password1);
             $query = "INSERT INTO users (username, email, password) VALUES('$username', '$email', '$password')";
             mysqli_query($db, $query);
             $_SESSION['username'] = $username;
@@ -53,6 +58,7 @@
         }
     }
 
+    // LOGIN
     if (isset($_POST['login_user'])) {
         $username = mysqli_real_escape_string($db, $_POST['username']);
         $password = mysqli_real_escape_string($db, $_POST['password']);
@@ -77,4 +83,4 @@
             }
         }
     }
-?>
+?>    
