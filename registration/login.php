@@ -17,8 +17,8 @@
         <?php include('errors.php'); ?>
 
         <div class="input-group">
-            <label>Email</label>
-            <input type="text" name="email">
+            <label>Username</label>
+            <input type="text" name="username">
         </div>
 
         <div class="input-group">
