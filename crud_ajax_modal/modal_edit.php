@@ -16,7 +16,7 @@
       </div>
 
         <div class="modal-body">
-        	<form id="form-update" action="proses_edit.php" name="modal_popup" enctype="multipart/form-data" method="POST">
+        	<form id="form-update" action="edit.php" name="modal_popup" enctype="multipart/form-data" method="POST">
         		
                 <div class="form-group" style="padding-bottom: 20px;">
                 	<label for="Name">Name</label>
