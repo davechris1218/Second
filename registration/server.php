@@ -23,7 +23,11 @@
             array_push($errors, "Email is required");
         }
 
-        if (count($birthDate) > 2003) {
+        if (empty($birthDate)) {
+            array_push($errors, "Date of birth is required");
+        }
+
+        if ($birthDate > 2003) {
             array_push($errors, "Age must be 18 or higher");
         }
 
@@ -50,9 +54,9 @@
 
         if (count($errors) == 0) {
             $password = md5($password1);
-            $query = "INSERT INTO users (username, email, password) VALUES('$username', '$email', '$password')";
+            $query = "INSERT INTO users (username, email, password, DateOfBirth) VALUES('$username', '$email', '$password', '$birthDate')";
             mysqli_query($db, $query);
-            $_SESSION['username'] = $username;
+            $_SESSION['email'] = $email;
             $_SESSION['success'] = "You are now logged in";
             header('location: index_2.php');
         }
@@ -60,11 +64,11 @@
 
     // LOGIN
     if (isset($_POST['login_user'])) {
-        $username = mysqli_real_escape_string($db, $_POST['username']);
+        $email = mysqli_real_escape_string($db, $_POST['email']);
         $password = mysqli_real_escape_string($db, $_POST['password']);
     
-        if (empty($username)) {
-            array_push($errors, "Username is required");
+        if (empty($email)) {
+            array_push($errors, "Email is required");
         }
         if (empty($password)) {
             array_push($errors, "Password is required");
@@ -72,14 +76,14 @@
        
         if (count($errors) == 0) {
             $password = md5($password);
-            $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+            $query = "SELECT * FROM users WHERE email='$email' AND password='$password'";
             $results = mysqli_query($db, $query);
             if (mysqli_num_rows($results) == 1) {
-                $_SESSION['username'] = $username;
+                $_SESSION['email'] = $email;
                 $_SESSION['success'] = "You are now logged in";
                 header('location: index_2.php');
             }else {
-                array_push($errors, "Wrong username/password combination");
+                array_push($errors, "Wrong email/password combination");
             }
         }
     }
